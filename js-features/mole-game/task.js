@@ -3,8 +3,6 @@ const dead = document.getElementById("dead");
 const lost = document.getElementById("lost");
 dead.textContent = 0;
 lost.textContent = 0;
-let victory = 0;
-let defeat = 0;
 
 function getHole() {
 	for (let i = 1; i < 10; i ++) {
