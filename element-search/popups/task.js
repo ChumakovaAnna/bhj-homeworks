@@ -9,22 +9,21 @@ console.log(button);
 let modalSucces = document.getElementById("modal_success");
 console.log(modalSucces);
 
-let oneClose;
 let faq;
+let oneClose;
 for (let i = 0; i < allCloses.length; i ++) {
 	console.log(i);
-	oneClose = allCloses.item(i)
+	oneClose = allCloses.item(i);
 	console.log(oneClose);
-	 faq = oneClose.classList.contains("show-success")
-	 console.log(faq);
+	faq = oneClose.classList.contains("show-success");
 	oneClose.onclick = function () {
-		if (oneClose.classList.contains("show-success")) {
-			// modal.classList.remove("modal_active");
-			// modalSucces.classList.add("modal_active");
+		if (faq) {
+			modal.classList.remove("modal_active");
+			modalSucces.classList.add("modal_active");
 			console.log("rkbr");
 		} else {
-			// modal.classList.remove("modal_active");
+			modal.classList.remove("modal_active");
 			console.log("jj");
 		}
 	}
-}
+};
