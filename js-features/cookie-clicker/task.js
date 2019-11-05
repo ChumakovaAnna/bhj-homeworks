@@ -26,6 +26,7 @@ function clicker() {
 		startTime = new Date;
 		startFirstClick = startTime.getTime();
 		end = loadTime;
+	}
 	
 	if (begine.textContent % 2 !== 0) {
 		element.width = 150;
