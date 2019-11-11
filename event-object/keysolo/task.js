@@ -17,25 +17,20 @@ class Game {
   }
 
   registerEvents() {
-	  let symbol = this.currentSymbol;
-	  let textSymbol = symbol.textContent;
-	  let codeTextSymbol = textSymbol.charCodeAt(0);
-	  console.log(codeTextSymbol);
+	  let game = this;
 	  document.addEventListener("keypress", function (event) {
-		  console.log(event.keyCode);
-		  if (event.keyCode == codeTextSymbol) {
-			this.success();
-		  } else {
-			this.fail();
-		  }
+		let symbol = game.currentSymbol;
+		let textSymbol = symbol.textContent;
+		let codeTextSymbol = textSymbol.charCodeAt(0);
+		console.log(`codeTextSymbol ${codeTextSymbol}`);
+		console.log(`event.keyCode ${event.keyCode}`);
+		console.log(`currentSymbol.textContent ${game.currentSymbol.textContent}`);
+		if (event.keyCode == codeTextSymbol) {
+			game.success();
+		} else {
+			game.fail();
+		}
 	  });
-	/*
-	  TODO:
-	  Написать обработчик события, который откликается
-	  на каждый введённый символ.
-	  В случае правильного ввода слова вызываем this.success()
-	  При неправильном вводе символа - this.fail();
-	 */
   }
 
   success() {
