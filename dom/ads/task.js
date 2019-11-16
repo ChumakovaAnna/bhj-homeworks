@@ -7,7 +7,6 @@ texts.forEach(function (ele) {
 
 	return speeds.push(Number(eleTime));
 });
-console.log(speeds);
 
 function changeActiveText() {
 	let index;
