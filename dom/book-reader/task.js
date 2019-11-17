@@ -4,9 +4,12 @@ const textColors = document.querySelectorAll(".book__control_color .color");
 const backgroundColors = document.querySelectorAll(".book__control_background .color");
 const classSizeActive = "font-size_active";
 const classColorActive = "color_active";
+const sizeText = "book_fs-";
+const colorText = "book_color-";
+const backgrounText = "color_";
 
-function deactivateCurrentElement (elements, className) {
-	console.log(elements.length);
+function deactivateActiveElement (elements, className) {
+	console.log(elements);
 	for (let i = 0; i < elements.length; i++ ) {
 		let element = elements.item(i);
 		if (element.classList.contains(className)) {
@@ -25,25 +28,33 @@ function changeActive(elements, element, classActive) {
 	activeElement.classList.add(classActive);
 }
 
+function removeActiveStyle (previousElementStyle, textStyle) {
+	if (previousElementStyle) {
+		book.classList.remove(textStyle + previousElementStyle);
+	}
+}
+
+function addStyle(elementStyle, textStyle) {
+	if (elementStyle) {
+		book.classList.add(textStyle + elementStyle);
+	}
+}
+
 fontSizes.forEach(function (ele) {
 	ele.addEventListener("click", changeFontSize);
 	
 	function changeFontSize(event) {
-		let previousActive = deactivateCurrentElement(fontSizes, classSizeActive);
-		console.log(previousActive);
+		let previousActive = deactivateActiveElement(fontSizes, classSizeActive);
+
 		let previousDataStyle = previousActive.dataset.size;
-		if (previousDataStyle) {
-			book.classList.remove(`book_fs-${previousDataStyle}`);
-		}
+		removeActiveStyle(previousDataStyle, sizeText);
+		
 		let eventTarget = event.target;
 		changeActive(fontSizes, eventTarget, classSizeActive);
 		
 		let dataStyle = eventTarget.dataset.size;
-		if (dataStyle) {
-			book.classList.add(`book_fs-${dataStyle}`);
-		}
+		addStyle(dataStyle, sizeText);
 
-// запрещаем переход по ссылке
 		event.preventDefault();
 	}
 });
@@ -52,19 +63,35 @@ textColors.forEach(function(ele) {
 	ele.addEventListener("click", changeTextColor)
 
 	function changeTextColor(event) {
-		deactivateCurrentElement(textColors, classColorActive);
+		let previousActive = deactivateActiveElement (textColors, classColorActive);
+
+		let previousDataStyle = previousActive.dataset.color;
+		removeActiveStyle(previousDataStyle, colorText);
+
 		let eventTarget = event.target;
-		console.log(eventTarget);
 		changeActive(textColors, eventTarget, classColorActive);
 
 		let dataStyle = eventTarget.dataset.color;
-		console.log(dataStyle);
+		addStyle(dataStyle, colorText);
 
-		book.className = "book"
+		event.preventDefault();
+	}
+});
 
-		if (dataStyle) {
-			book.classList.add(`book_color-${dataStyle}`);
-		}
+backgroundColors.forEach(function(ele) {
+	ele.addEventListener("click", changeBackgroundColor)
+
+	function changeBackgroundColor(event) {
+		let previousActive = deactivateActiveElement (backgroundColors, classColorActive);
+
+		let previousDataStyle = previousActive.dataset.color;
+		removeActiveStyle(previousDataStyle, backgrounText);
+
+		let eventTarget = event.target;
+		changeActive(backgroundColors, eventTarget, classColorActive);
+
+		let dataStyle = eventTarget.dataset.color;
+		addStyle(dataStyle, backgrounText);
 
 		event.preventDefault();
 	}
