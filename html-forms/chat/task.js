@@ -19,8 +19,7 @@ chatInput.addEventListener("keydown", (e) => {
 	// listen to click enter
 	if (e.keyCode == 13) {
 
-		chatInput.addEventListener("change", event => {
-			console.log(event);
+		chatInput.addEventListener("change", () => {
 			let messangeClient = chatInput.value;
 
 			if (messangeClient) {
@@ -72,7 +71,7 @@ chatInput.addEventListener("keydown", (e) => {
 					"Все ваши проблемы нас не касаются."
 				];
 
-				function getMessagefromTextBot(arr) {
+				function getRundomTextfromBot(arr) {
 					const maxIndex = arr.length;
 
 					function getRandomIndex(max) {
@@ -83,7 +82,7 @@ chatInput.addEventListener("keydown", (e) => {
 					return textsBot[getRandomIndex(maxIndex)];
 				}
 
-				getMessageText(indexBot, getMessagefromTextBot(textsBot));
+				getMessageText(indexBot, getRundomTextfromBot(textsBot));
 			}
 			chatInput.value = "";
 		});
