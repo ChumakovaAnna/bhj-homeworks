@@ -9,11 +9,10 @@ allTooltips.forEach((ele) => {
 			ele.remove();
 		});
 
-		const element = e.target;
-		newTooltip.innerText = element.getAttribute("title");
-		console.log(newTooltip);
-
-		element.insertAdjacentElement("afterEnd", newTooltip);
+		const activeLink = e.target;
+		newTooltip.innerText = activeLink.getAttribute("title");
+		activeLink.insertAdjacentElement("afterEnd", newTooltip);
+		newTooltip.style.left = `${activeLink.offsetLeft}px`;
 
 		event.preventDefault();
 	});
