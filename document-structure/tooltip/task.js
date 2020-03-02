@@ -17,3 +17,11 @@ allTooltips.forEach((ele) => {
 		event.preventDefault();
 	});
 });
+
+window.addEventListener("click", (e) => {
+	if (!e.target.closest(".has-tooltip")) {
+		if (document.querySelector(".tooltip")) {
+			document.querySelector(".tooltip").remove();
+		}
+	}
+});
