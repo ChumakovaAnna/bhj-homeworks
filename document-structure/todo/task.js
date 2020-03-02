@@ -4,8 +4,10 @@ const tasksList = document.getElementById("tasks__list");
 const savedTasks = []
 
 const removeTask = (e) => {
-	const taskTitle = e.target.closest(".task").querySelector(".task__title");
-	e.target.closest(".task").remove();
+	if (e.target.closest(".task__remove")) {
+		e.target.closest(".task").remove();
+	};
+	const taskTitle = e.target.closest(".task").querySelector(".task__remove");
 	savedTasks.splice(savedTasks.indexOf(taskTitle.innerText.trim()), 1);
 };
 
