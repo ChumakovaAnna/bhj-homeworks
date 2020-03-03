@@ -16,6 +16,10 @@ allTooltips.forEach((ele) => {
 
 		event.preventDefault();
 	});
+	ele.addEventListener("dblclick", (e) => {
+		console.log("dblclick")
+		document.querySelector(".tooltip").remove();
+	});
 });
 
 window.addEventListener("click", (e) => {
