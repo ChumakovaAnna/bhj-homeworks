@@ -7,8 +7,7 @@ const removeTask = (e) => {
 	if (e.target.closest(".task__remove")) {
 		e.target.closest(".task").remove();
 	};
-	const taskTitle = e.target.closest(".task").querySelector(".task__remove");
-	savedTasks.splice(savedTasks.indexOf(taskTitle.innerText.trim()), 1);
+	e.target.closest(".task").querySelector(".task__remove");
 };
 
 const addTask = (e) => {
@@ -23,7 +22,6 @@ const addTask = (e) => {
 	if (e.keyCode === 13 || e.type === "click") {
 		if (taskInput.value.trim() != "") {
 			tasksList.insertAdjacentHTML("beforeend", taskHTML);
-			savedTasks.push(taskInput.value);
 			taskInput.value = "";
 			e.preventDefault();
 		}
@@ -35,7 +33,6 @@ taskButton.addEventListener("click", addTask);
 tasksList.addEventListener("click", removeTask);
 
 function loadTasks() {
-	console.log(localStorage.getItem("tasks"))
 	const memory = localStorage.getItem("tasks");
 	const arr = memory.split(",");
 	if (!arr[1] == "") {
@@ -43,10 +40,10 @@ function loadTasks() {
 			const div = document.createElement("div");
 			div.classList.add("task");
 			div.innerHTML = `
-				<div class="task__title">
-					${ele}
-				</div>
-				<a href="#" class="task__remove">&times;</a>`;
+			<div class="task__title">
+				${ele}
+			</div>
+			<a href="#" class="task__remove">&times;</a>`;
 			tasksList.appendChild(div);
 		});
 	}
@@ -55,12 +52,13 @@ function loadTasks() {
 window.addEventListener("load", loadTasks);
 
 function onunloadTasks() {
-	const allSavedTasks = document.querySelectorAll("task__title");
-	allSavedTasks.forEach((ele) => {
-		savedTasks.push(ele.innerText.trim());
-	});
-	localStorage.removeItem("tasks");
-	localStorage.setItem("tasks", savedTasks);
+	const allSavedTasks = document.querySelectorAll(".task__title");
+	if (allSavedTasks) {
+		allSavedTasks.forEach((ele) => {
+			savedTasks.push(ele.innerText.trim());
+		});
+		localStorage.setItem("tasks", savedTasks);
+	};
 }
 
 window.addEventListener("unload", onunloadTasks);
