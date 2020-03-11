@@ -11,6 +11,7 @@ function addListener(xhr) {
 	xhr.addEventListener("loadstart", addValue);
 	xhr.addEventListener("progress", addValue);
 	xhr.addEventListener("load", () => {
+		progressBar.value = 1;
 		alert("Загрузка завершена.");
 	});
 	xhr.addEventListener("error", () => {
