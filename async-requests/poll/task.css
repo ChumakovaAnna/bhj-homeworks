@@ -1,3 +1,75 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.poll__answer {
+  margin: 5px;
+  padding: 5px;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #9e289e;
+  background-color: #9e289e;
+  border-radius: 5px;
+}
+
+.poll__answer:first-child {
+  margin-left: 0;
+}
+
+.poll__title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #800080;
+}
+
+.dialog {
+  display: none;
+}
+
+.shadow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.thanks {
+  position: absolute;
+  left: calc(50% - 151px);
+  top: 3%;
+  width: 300px;
+  height: 100px;
+  background-color: #fff;
+  border: 3px double #008080;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.thanks-text {
+  margin-top: 30px;
+}
+
+.close {
+  margin-top: 25px;
+  color: #20b2aa;
+  font-weight: bold;
+}
+
+.open {
+  display: block;
+}
+
+.statistic {
+  font-weight: bold;
+  color: #008080;
 }
