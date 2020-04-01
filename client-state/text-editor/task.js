@@ -1,7 +1,7 @@
 const editor = document.getElementById("editor");
 const button = document.querySelector(".reset");
 
-editor.addEventListener("blur", () => {
+editor.addEventListener("input", () => {
 	localStorage.setItem("text", editor.value);
 });
 
